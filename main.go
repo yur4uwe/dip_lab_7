@@ -23,10 +23,9 @@ func dft(x []complex128, inv bool) []complex128 {
 		for n := 0; n < N; n++ {
 			omega := 2 * math.Pi * float64(k*n) / float64(N)
 			if inv {
-				sum += complex(math.Cos(omega), math.Sin(omega)) * x[n]
-			} else {
-				sum += complex(math.Cos(omega), -math.Sin(omega)) * x[n]
+				omega = -omega
 			}
+			sum += complex(math.Cos(omega), math.Sin(omega)) * x[n]
 		}
 		if inv {
 			sum /= complex(float64(N), 0)
